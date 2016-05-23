@@ -1,0 +1,56 @@
+<md-dialog flex="90" aria-label="Lock"  ng-cloak>
+    <form ng-submit="updateMenu(newMenu)">
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{title}} - {{menu.name}} Main Menu</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content" flex>
+                <div  layout="row" flex>
+                    <md-input-container class="md-block" flex="40">
+                        <label>Main Menu</label>
+                        <textarea ng-model="newMenu.mainmenu" name="mainmenu"></textarea>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="20">
+                        <input ng-model="newMenu.mainmenu_normalprice" type="number" ng-min="0" placeholder="Main menu normal price" ng-required="true" value="{{menu.mainmenu_normalprice}}">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="20">
+                        <input ng-model="newMenu.mainmenu_guestprice" type="number" ng-min="0" placeholder="Main menu normal price" ng-required="true" value="{{mainmenu_guestprice}}">
+                    </md-input-container>
+                </div>
+                <div  layout="row" ng-repeat="extra in newMenu.extra" flex>
+                    <md-input-container class="md-block" flex="40">
+                        <label>Extra Name</label>
+                        <input type="text" ng-model="newMenu.extra[$index].name" name="name">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="20">
+                        <input ng-model="newMenu.extra[$index].normalprice" type="number" ng-min="0" placeholder="Extra normal price" ng-required="true" >
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="20">
+                        <input ng-model="newMenu.extra[$index].guestprice" type="number" ng-min="0" placeholder="Extra guest price" ng-required="true">
+                    </md-input-container>
+                    <md-checkbox ng-model="newMenu.extra[$index].veg" aria-label="Checkbox 1">
+                        Veg
+                    </md-checkbox>
+                    <md-checkbox ng-model="newMenu.extra[$index].default" aria-label="Checkbox 2">
+                        Default
+                    </md-checkbox>
+                    <md-button ng-click="remove($index)">
+                        Remove
+                    </md-button>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            {{menu.message}}
+            <span flex></span>
+            <md-button ng-click="cancel()">Cancel</md-button>
+            <md-button type="submit" class="mr-s">Update</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

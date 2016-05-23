@@ -1,0 +1,29 @@
+<md-dialog flex="50" aria-label="Lock"  ng-cloak>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2 ng-if="!title">Guest</h2>
+        <h2 ng-if="title">{{title}}</h2>
+        <span flex></span>
+    </div> 
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <div flex layout="row" ng-repeat="item in newMenu"  class="p-0 m-0">
+                <span flex="60" class="p-0 m-0">{{item.name}}</span>
+                <span flex="60" layout="row"   class="p-0 m-0">
+                    <span  class="ml-xxs"><md-icon class="pointer" md-svg-src="images/icons/ic_remove_circle_outline_24px.svg" ng-click="subtract($index, 'normal')"></md-icon>{{item.qty}}</span>
+                    <span class="mr-xxs ml-xxs"><md-icon md-svg-src="images/icons/ic_add_circle_outline_24px.svg" class="pointer" ng-click="add($index, 'normal')"></md-icon><span class="ml-xxs"> X ₹{{item.price}}</span></span>
+                </span>
+                <span flex="10"   class="p-0 m-0">₹{{item.subtotal}}</span>
+                <md-divider class="mt-s"></md-divider>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()">Cancel</md-button>
+        <md-button type="submit" class="mr-s" ng-click="updateMenu(newMenu)" ng-if="!title">Confirm</md-button>
+        <!-- <md-button type="submit" class="mr-s" ng-click="updateAmount(newMenu)" ng-if="title">Update</md-button> -->
+        <md-button type="submit" class="mr-s" ng-click="collectAmount(newMenu)" ng-if="title">Collect</md-button>
+    </md-dialog-actions>
+</md-dialog>

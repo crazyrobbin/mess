@@ -1,0 +1,83 @@
+html {
+  font-size: 62.5%;
+  line-height: 1.4;
+  overflow: hidden;
+}
+body {
+  font-size: 1.6rem;
+}
+
+body {
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+}
+img.center {
+    display: block;
+    margin: 0 auto;
+}
+.bold{
+  font-weight: bold;
+}
+.center{
+    text-align: center;
+    margin: 0 auto;
+}
+.small-text{
+  font-size: 12px;
+}
+.pointer{
+  cursor: pointer;
+}
+.right{
+  float: right;
+}
+.left{
+  float: left;
+}
+.red{
+  color: #ff3300;
+}
+.green{
+    color: #fff;
+    background: #98fb00;
+}
+.block{
+  display: block;
+}
+.scroll-div{
+    overflow: scroll;
+    height: 565px;
+}
+.postpaid-div{
+    overflow: scroll;
+    height: 200px;
+}
+.nav-header {
+    flex-shrink: 0;
+    z-index: 2;
+}
+.inputIconDemo {
+    min-height: 48px; }
+md-input-container:not(.md-input-invalid) > md-icon.email {
+    color: green; }
+md-input-container:not(.md-input-invalid) > md-icon.name {
+    color: dodgerblue; }
+md-input-container.md-input-invalid > md-icon.email,
+md-input-container.md-input-invalid > md-icon.name {
+    color: red; }
+.nav-header h1,
+.nav-header h4 {
+    color: white;
+    text-align: center;
+}
+.white{
+  color: #fff;
+}
+fieldset.standard {
+  border-style: solid;
+  border-width: 1px;
+  height: 100%; }
+.nav-header a.logo {
+    text-decoration: none;
+}

@@ -1,0 +1,38 @@
+<md-toolbar class="md-whiteframe-2dp" ng-include="'views/actionbar.html'" ng-if="title" ng-cloak></md-toolbar>
+<md-content ng-cloak>
+    <md-tabs md-dynamic-height md-border-bottom md-selected="0" ng-cloak>
+        <md-tab ng-repeat="menu in days" label="{{menu.day}}">
+        	<md-content class="md-padding" layout="row" flex>
+  					<md-card ng-repeat="type in menu.type" flex="25">
+    					<md-card-title>
+      						<md-card-title-text>
+        						<span class="md-title">{{type.name}}</span>
+        						<span class="md-caption">{{type.mainmenu}}<span ng-if="type.mainmenu==''">N/A</span>
+        						</span>
+      						</md-card-title-text>
+    					</md-card-title>
+    					<md-card-content>
+    						<span ng-repeat="extra in type.extra" class="block md-body-1" ng-class="$index!=0 ? 'mt-xxs' : ''">
+    							{{extra.name}} - <span class="ml-xxs">₹{{extra.normalprice}}<md-tooltip md-direction="top">Base Price</md-tooltip></span><span class="ml-xs">₹{{extra.guestprice}}<md-tooltip md-direction="bottom">Guest Price</md-tooltip></span>
+    						</span>
+    					</md-card-content>
+						<md-divider class="m-0"></md-divider>
+    					<md-card-actions layout="row" layout-align="end center">
+    						<span class="mr-s" ng-if="type.mainmenu!=''">
+    							₹{{type.mainmenu_normalprice}}<md-tooltip md-direction="bottom">Base Price</md-tooltip>
+        					</span>
+        					<span class="mr-s" ng-if="type.mainmenu!=''">
+    							₹{{type.mainmenu_guestprice}}<md-tooltip md-direction="bottom">Guest Price</md-tooltip>
+        					</span>
+        					<md-button class="md-icon-button ml-xxs" aria-label="Edit" ng-click="editMainMenu($parent.$index, $index, $event)"><md-icon md-svg-src="images/icons/ic_edit_24px.svg"></md-icon><md-tooltip md-direction="bottom">Edit</md-tooltip>
+        					</md-button>
+      						<md-button class="md-icon-button" aria-label="Edit" ng-click="addExtra($parent.$index, $index, $event)">
+            					<md-icon md-svg-src="images/icons/ic_add_24px.svg"></md-icon>
+            					<md-tooltip md-direction="bottom">Add Extra</md-tooltip>
+        					</md-button>
+    					</md-card-actions>
+  					</md-card>
+  			</md-content>
+        </md-tab>
+    </md-tabs>
+</md-content>

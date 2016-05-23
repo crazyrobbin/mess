@@ -1,0 +1,22 @@
+<md-dialog flex="50" aria-label="Lock"  ng-cloak>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2>{{title | capitalize}} delivery address</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+    </div> 
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+         <md-list-item ng-repeat="list in lists">
+    		<p> <span class="bold">Name:</span> {{ list.name }} (<span ng-if="!list.veg">Non </span>Veg)  <span class="bold">Address:</span> {{list.address}}</p>
+  		</md-list-item>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

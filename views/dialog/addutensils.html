@@ -1,0 +1,24 @@
+<md-dialog flex="50" aria-label="Lock"  ng-cloak>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2>Issue Utensils</h2>
+        <span flex></span>
+    </div> 
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <div flex layout="row" ng-repeat="item in utensils"  class="p-0 m-0">
+                <span flex="60" class="p-0 m-0">{{item.name}}</span>
+                <span flex="60" layout="row"   class="p-0 m-0">
+                    <span  class="ml-xs mr-xs"><md-icon class="pointer ml-xs mr-xs" md-svg-src="images/icons/ic_remove_circle_outline_24px.svg" ng-click="subtract($index, 'normal')"></md-icon>{{item.quantity}}</span>
+                    <span class="mr-xs ml-xs"><md-icon md-svg-src="images/icons/ic_add_circle_outline_24px.svg" class="pointer" ng-click="add($index, 'normal')"></md-icon></span>
+                </span>
+                <md-divider class="mt-s"></md-divider>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()">Done</md-button>
+    </md-dialog-actions>
+</md-dialog>

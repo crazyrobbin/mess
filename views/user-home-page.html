@@ -1,0 +1,92 @@
+<div aria-label="User"  ng-cloak>
+    <form>
+        <md-toolbar class="md-whiteframe-2dp">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" back-button>
+                    <md-icon md-svg-src="images/icons/ic_arrow_back_24px.svg" aria-label="Back"></md-icon>
+                </md-button>
+                <h2 ng-if="user.name">{{user.name}}</h2>
+                <span flex></span>
+                <md-button ng-click="editProfile($event)">Edit Profile</md-button>
+            </div>
+        </md-toolbar>
+        <md-content ng-cloak>
+            <div class=" mb-0 pt-0" flex layout="row">
+                <div class="flex-50" layout="column">
+                    <div flex layout="row" class="p-xs">
+                        <div class="flex-50"><img class="center mt-xs mb-s" src="images/profile.png" alt="profile image" width="116" height="116.5"></div>
+                        <div class="flex-50" class="p-xs" ng-cloak>
+                            <span class="block mt-xs"><md-title class="bold block mt-xxs">Room No: </md-title>{{user.roomNo}}</span>
+                            <span class="block mt-xs"><md-title class="bold block mt-xxs">Email: </md-title>{{user.email}}</span>
+                            <span class="block mt-xs mb-xs"><md-title class="bold block mt-xxs">Phone No: </md-title>{{user.phoneNo}}</span>
+                            <span class="block mt-xs mb-xs"><md-title class="bold block mt-xxs">Address: </md-title>{{user.address}}</span>
+                            <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-if="user._id!='0'" ng-model="user.veg" ng-change="updateVeg()" class="md-primary">Veg</md-checkbox>
+                        </div>
+                    </div>
+                    <md-divider class="mt-s"></md-divider>
+                    <div flex class="p-xs">
+                        <span class="md-title mt-xs block">Current Balance </span>
+                        <span class="md-display-1 mt-xxs block" ng-class="user.balance > 0 ? '' : 'red'">
+                            <span ng-if="user.balance < 0">-</span>
+                            ₹{{user.balance < 0 ? user.balance * -1 : user.balance}}
+                        </span>
+                    </div>
+                </div>
+                <div class="flex-50 p-s" layout="column">
+                    <div flex layout="row" ng-repeat="item in menu.normal" ng-if="user.type=='normal'" class="p-0 m-0">
+                        <span flex="60" class="p-0 m-0">{{item.name}}</span>
+                        <span flex="60" layout="row"   class="p-0 m-0">
+                            <span  class="ml-xxs"><md-icon class="pointer" md-svg-src="images/icons/ic_remove_circle_outline_24px.svg" ng-click="subtract($index, 'normal')"></md-icon>{{item.qty}}</span>
+                            <span class="mr-xxs ml-xxs"><md-icon md-svg-src="images/icons/ic_add_circle_outline_24px.svg" class="pointer" ng-click="add($index, 'normal')"></md-icon><span class="ml-xxs"> X ₹{{item.price}}</span></span>
+                        </span>
+                        <span flex="10"   class="p-0 m-0">₹{{item.subtotal}}</span>
+                        <md-divider flex class="mt-s"></md-divider>
+                    </div>
+                    <div flex layout="row" ng-repeat="item in menu.guest" ng-if="user.type=='guest'" class="p-0 m-0">
+                        <span flex="60" class="p-0 m-0">{{item.name}}</span>
+                        <span flex="60" layout="row"   class="p-0 m-0">
+                            <span  class="ml-xxs"><md-icon class="pointer" md-svg-src="images/icons/ic_remove_circle_outline_24px.svg" ng-click="subtract($index, 'guest')"></md-icon>{{item.qty}}</span>
+                            <span class="mr-xxs ml-xxs"><md-icon md-svg-src="images/icons/ic_add_circle_outline_24px.svg" class="pointer" ng-click="add($index, 'guest')"></md-icon><span class="ml-xxs"> X ₹{{item.price}}</span></span>
+                        </span>
+                        <span flex="10"   class="p-0 m-0">₹{{item.subtotal}}</span>
+                        <md-divider flex class="mt-s"></md-divider>
+                    </div>
+                    <div flex layout="row" ng-if="user.type=='normal'"  class="p-0 m-0">
+                        <span flex="60" class="p-0 m-0">Guest</span>
+                        <span flex="60" layout="row"   class="p-0 m-0">
+                            <md-icon md-svg-src="images/icons/ic_add_circle_outline_24px.svg" class="pointer" ng-click="addGuest($event)" class="pointer"></md-icon>
+                        </span>
+                        <span flex="10"   class="p-0 m-0">₹{{subtotalguest}}</span>
+                    </div>
+                    <md-divider flex class="mt-s"></md-divider>
+                    <div flex class="p-xs">
+                        <span class="md-title mr-l ">Total </span>
+                        <span class="md-display-1 mt-xxs mr-l">
+                            ₹{{subtotal}}
+                        </span>
+                        <md-checkbox ng-model="user.prepaid" aria-label="Checkbox 1" ng-if="user.type=='guest'">
+                            Pay Now
+                        </md-checkbox>
+                        <span class="md-headline mt-xxs ml-l" class="green" ng-if="user.type=='normal' && user.visited">
+                           Visited
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </md-content>
+        <md-content layout="row">
+            <div flex="50">
+                <md-button class="" ng-click="history($event)" ng-if="user.type=='normal'">History</md-button>
+                <md-button class="" ng-click="pay($event)" ng-if="user.type=='normal'">Pay</md-button>
+                <md-button class="" ng-click="addDates($event, 'delivery')" ng-if="user.type=='normal'">Delivery</md-button>
+                <md-button class="" ng-click="addDates($event, 'rebate')" ng-if="user.type=='normal'">Rebate</md-button>
+                <md-button class="" ng-click="rebateDeliveryHitory($event, 'rebate')" ng-if="user.type=='normal'">Rebate History</md-button>
+                <md-button class="" ng-click="rebateDeliveryHitory($event, 'delivery')" ng-if="user.type=='normal'">Delivery History</md-button>
+                <md-button class="" ng-click="utensils($event)">Utensils</md-button>
+            </div>
+            <div flex="50">
+                <md-button class="md-warn md-raised mr-s"  ng-click="confirm()">Confirm</md-button>
+            </div>
+        </md-content>
+      </form>
+</div>

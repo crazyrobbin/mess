@@ -1,0 +1,36 @@
+<md-dialog flex="50" aria-label="Lock"  ng-cloak>
+    <form ng-submit="updateMenu(newMenu)">
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{title}} - {{menu.name}} Main Menu</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content" flex>
+                <div  layout="row" flex>
+                    <md-input-container class="md-block" flex="100">
+                        <label>Main Menu</label>
+                        <textarea ng-model="newMenu.mainmenu" name="mainmenu"></textarea>
+                    </md-input-container>
+                </div>
+                <div  layout="row" ng-repeat="extra in menu.extra" flex>
+                    <md-input-container class="md-block" flex="50">
+                        <input ng-model="newMenu.extra[$index].name" type="text" placeholder="Main menu normal price" ng-required="true" value=" {{extra.name}}">
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-input-container class="md-block" flex="50">
+            	<input ng-model="roomNo" type="text" placeholder="Room No/ Phone No" ng-required="true">
+            </md-input-container>
+            <span flex></span>
+            <md-button ng-click="cancel()">Cancel</md-button>
+            <md-button type="submit" class="mr-s">Submit</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

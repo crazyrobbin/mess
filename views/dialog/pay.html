@@ -1,0 +1,26 @@
+<md-dialog aria-label="Lock"  ng-cloak>
+    <form ng-submit="answer(amount)" name="payForm">
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Pay</h2>
+            <span flex></span>
+        </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Enter amount</label>
+                    <input type="text" ng-model="amount" ng-min="0" name="amount" md-autofocus ng-required="true">
+                    <div ng-messages="payForm.amount.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="cancel()">Cancel</md-button>
+            <md-button type="submit" class="mr-s">Confirm</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

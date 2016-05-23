@@ -1,0 +1,23 @@
+<md-dialog flex="50" aria-label="Lock"  ng-cloak>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2>{{title}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+    </div> 
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-list-item ng-repeat="item in items">
+                <p> Room No: {{ item.roomNo }}   Phone No: {{item.phoneNo}} </p>
+                <md-button class="md-secondary" ng-click="collect($index, $event)">Collect</md-button>
+            </md-list-item>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

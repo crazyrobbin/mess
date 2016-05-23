@@ -1,0 +1,68 @@
+<md-dialog flex="75" aria-label="Lock"  ng-cloak>
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{title}} - {{menu.name}}</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content" layout="row" flex>
+                <div class="flex-50">
+                    <md-input-container class="md-block">
+                        <label>Main Menu</label>
+                        <textarea ng-model="mainmenu" ng-required="true" name="mainmenu"></textarea>
+                        <div ng-messages="editMenuForm.mainmenu.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <input ng-model="user.roomNo" type="number" ng-min="0" placeholder="Main menu normal price" ng-required="true">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <input ng-model="user.roomNo" type="number" ng-min="0" placeholder="Main menu normal price" ng-required="true">
+                    </md-input-container>
+                    <span class="md-subheader" ng-if="menu.extra.size>0">Extra</span>
+                    
+                </div>
+                <div class="flex-50 md-padding">
+                    <form ng-submit="addExtra(extra)">
+                        <div layout="row" flex>
+                            <fieldset class="standard" flex>
+                                <legend>Add Extra</legend>
+                                <div layout="column" flex>
+                                    <md-input-container class="md-block">
+                                        <input type="text" placeholder="Name" ng-model="extra.name">
+                                    </md-input-container>
+                                    <md-input-container class="md-block">
+                                        <input type="number" placeholder="Normal price" ng-min="0" ng-model="extra.normalprice">
+                                    </md-input-container>
+                                    <md-input-container class="md-block">
+                                        <label for="content">Guest price</label>
+                                        <input type="number" id="content" ng-min="0" ng-model="extra.guestprice">
+                                    </md-input-container>
+                                </div>
+                                <div layout="row" flex>
+                                    <div flex="50">
+                                        <md-checkbox ng-model="extra.veg" aria-label="Checkbox 2">Veg</md-checkbox>
+                                        <md-checkbox ng-model="extra.default" aria-label="Checkbox 2">Default</md-checkbox>
+                                    </div>
+                                    <div flex="50">
+                                        <md-button class="md-primary md-raised" ng-disabled="!extra.name ||!extra.normalprice ||!extra.guestprice" type="submit">Add Extra</md-button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            {{user.message}}
+            <span flex></span>
+            <md-button ng-click="cancel()">Cancel</md-button>
+            <md-button type="submit" class="mr-s">Update</md-button>
+        </md-dialog-actions>
+</md-dialog>

@@ -1,0 +1,52 @@
+<md-dialog aria-label="User"  ng-cloak id="userDetailContainer">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 ng-if="user.name">{{user.name}}</h2>
+                <md-input-container class="md-block flex-50 center" ng-if="!user.name">
+                    <label>Room no/ Phone no</label>
+                    <input ng-model="userName" md-autofocus>
+                </md-input-container>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content mb-0 pt-0" flex layout="row">
+                <div class="flex-50" layout="column">
+                    <div flex layout="row" class="p-xs">
+                        <div class="flex-50"><img class="center mt-xs mb-s" src="images/profile.png" alt="profile image" width="116" height="116.5"></div>
+                        <div class="flex-50" class="p-xs">
+                            <span class="block mt-xs"><md-title class="bold block mt-xxs">Room No: </md-title>{{user.roomNo}}</span>
+                            <span class="block mt-xs"><md-title class="bold block mt-xxs">Email: </md-title>{{user.email}}</span>
+                            <span class="block mt-xs"><md-title class="bold block mt-xxs">Phone No: </md-title>{{user.phoneNo}}</span>
+                        </div>
+                    </div>
+                    <md-divider class="mt-s"></md-divider>
+                    <div flex class="p-xs">
+                        <span class="md-title mt-xs block">Current Balance </span>
+                        <span class="md-display-1 mt-xxs block" ng-class="user.balance > 0 ? 'green' : 'red'">
+                            <span ng-if="user.balance < 0">-</span>
+                            ₹{{user.balance < 0 ? user.balance * -1 : user.balance}}
+                        </span>
+                    </div>
+                </div>
+                <div class="flex-50 p-s">
+                    Normal<br>
+                    Guest<br>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button class="" ng-click="history($event)">History</md-button>
+            <md-button class="" ng-click="pay($event)">Pay</md-button>
+            <md-button class="" ng-click="rebate($event)">Delivery/ Rebate</md-button>
+            <md-button class="" ng-click="utensils($event)">Utensils</md-button>
+            <span flex></span>
+            <md-button ng-click="cancel()" class="ml-l">Cancel</md-button>
+            <md-button class="md-warn md-raised mr-s" ng-click="answer('useful')">Confirm</md-button>
+        </md-dialog-actions>
+      </form>
+</md-dialog>

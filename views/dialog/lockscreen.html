@@ -1,0 +1,18 @@
+<md-dialog aria-label="Lock"  ng-cloak>
+    <form>
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Sushruta Hostel</h2>
+            <span flex></span>
+        </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Enter PIN to unlock</label>
+                    <input type="text" ng-model="pin" ng-min="1000"  md-autofocus ng-change="unlock()">
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+    </form>
+</md-dialog>

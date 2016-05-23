@@ -1,0 +1,38 @@
+<md-dialog flex="50" aria-label="Lock"  ng-cloak>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2>Add {{title}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+    </div> 
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content" flex layout="row">
+            <div flex="100" layout="column">
+                <div flex class="mb-s">
+                    <md-datepicker ng-model="startDate.value" md-placeholder="Enter start date" class="mr-l" md-min-date="startMinDate" ng-change="changeStartDateMin()" ng-click="changeStartDateMin()">
+                    </md-datepicker>
+                    <md-checkbox ng-repeat="time in startDate.timings" ng-model="time.checked" ng-disabled="time.disabled">{{time.value | capitalize}}</md-checkbox>
+                </div>
+                <div flex class="mb-s">
+                    <md-datepicker ng-model="endDate.value" md-placeholder="Enter end date" class="mr-l" md-min-date="endMinDate">
+                    </md-datepicker>
+                    <md-checkbox ng-repeat="time in endDate.timings" ng-model="time.checked" ng-disabled="time.disabled">{{time.value | capitalize}}</md-checkbox>
+                </div>
+                 <div flex layout="row">
+                    <md-checkbox ng-model="allBreakfast">All Breakfast</md-checkbox>
+                    <md-checkbox ng-model="allLunch">All Lunch</md-checkbox>
+                    <md-checkbox ng-model="allDinner">All Dinner</md-checkbox>
+                </div>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="reset()">Reset</md-button>
+        <span flex></span>
+        <md-button ng-click="cancel()">Cancel</md-button>
+        <md-button ng-click="add()">Add</md-button>
+    </md-dialog-actions>
+</md-dialog>

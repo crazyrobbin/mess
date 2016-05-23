@@ -1,0 +1,94 @@
+<div flex class="pr-xs pl-xs gridListdemoBasicUsage"  ng-cloak>
+	<div class="md-toolbar-tools">
+		<h2 class="bold">{{day}}'s Menu</h2>
+            <span flex></span>
+      <md-button class="md-raised md-warn" ng-disabled="currentMealHour" ng-click="closeMealHour($event)">{{mealHourStatus}}</md-button>
+			<md-button class="md-raised md-warn" ng-click="register($event)">Register</md-button>
+    </div>
+    <md-content class="md-padding" layout="row" flex>
+      <md-card  flex="33">
+              <md-card-title>
+                  <md-card-title-text>
+                    <span class="md-title">Breakfast</span>
+                  </md-card-title-text>
+              </md-card-title>
+              <md-card-content>
+                <span class="block md-body-1">
+                  <span ng-show="menu.breakfast.main!=''">{{menu.breakfast.daily}}</span>
+                  <span ng-show="menu.breakfast.main!=''">{{menu.breakfast.main}}</span>
+                  <span ng-show="menu.breakfast.main==''">{{orderOnline}}</span>
+                </span>
+              </md-card-content>
+            <md-divider class="m-0"></md-divider>
+              <md-card-actions layout="row" ng-class="timing.breakfast.open ? 'green': 'gray'" class="p-0">
+                  <span class="p-xxs">{{timing.breakfast.value}}</span>
+              </md-card-actions>
+    </md-card>
+
+    <md-card  flex="33">
+              <md-card-title>
+                  <md-card-title-text>
+                    <span class="md-title">Lunch</span>
+                  </md-card-title-text>
+              </md-card-title>
+              <md-card-content>
+                <span class="block md-body-1">
+                  <span ng-show="menu.lunch.main!=''">{{menu.lunch.daily}}</span>
+                  <span ng-show="menu.lunch.main!=''">{{menu.lunch.main}}</span>
+                  <span ng-show="menu.lunch.main==''">{{orderOnline}}</span>
+                </span>
+              </md-card-content>
+            <md-divider class="m-0"></md-divider>
+              <md-card-actions ng-class="timing.lunch.open ? 'green': 'gray'" layout="row"  class="p-0">
+                  <span class="p-xxs">{{timing.lunch.value}}</span>
+              </md-card-actions>
+    </md-card>
+
+    <md-card  flex="33">
+              <md-card-title>
+                  <md-card-title-text>
+                    <span class="md-title">Dinner</span>
+                  </md-card-title-text>
+              </md-card-title>
+              <md-card-content>
+                <span class="block md-body-1">
+                  <span ng-show="menu.dinner.main!=''">{{menu.dinner.daily}}</span>
+                  <span ng-show="menu.dinner.main!=''">{{menu.dinner.main}}</span>
+                  <span ng-show="menu.dinner.main==''">{{orderOnline}}</span>
+                </span>
+              </md-card-content>
+            <md-divider class="m-0"></md-divider>
+              <md-card-actions ng-class="timing.dinner.open ? 'green': 'gray'" layout="row" class="p-0">
+                  <span class="p-xxs">{{timing.dinner.value}}</span>
+              </md-card-actions>
+    </md-card>
+
+
+  </md-content>
+<md-divider class="mt-s"></md-divider>
+<div layout="row" class="p-xxxs">
+  	<div flex="70" class="p-xs">
+    	<p><span class="md-body-2">Note: </span><span class="md-caption">In case any of the registered resident is unable to visit the mess and is willing to avail rebate for the said meal. He/She will need to apply for rebate latest by the end of last meal hours.</span></p>
+    	<form class="mt-l" ng-submit="openUserDetail($event, roomNo)" name="userDetailForm">
+			<md-input-container class="md-block flex-50 center">
+	        	<label>Room no/ Phone no</label>
+	        	<input type="text" ng-model="roomNo" name="roomNo" md-autofocus ng-required="true">
+                    <div ng-messages="userDetailForm.roomNo.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+	      	</md-input-container>
+	      	<div class="flex-50 center md-block">
+	      		<button flex class="md-button flex md-raised md-warn" type="submit" value="Submit">Continue</button>
+	      	</div>
+    	</form>
+  	</div>
+  	<div flex="30" class="pl-xxs">
+  	  <md-content md-scroll-y layout="column" flex class="postpaid-div">
+    	<md-subheader class="md-no-sticky" ng-if="postpaids.length">Postpaid Users</md-subheader>
+		<md-list-item ng-repeat="postpaid in postpaids" ng-click="collectFromPostpaidUsers($event, $index, postpaid)">
+			<p> {{ postpaid.type }} - ₹{{postpaid.amount}} Room - {{postpaid.roomNo}} </p>
+		</md-list-item>
+		<md-divider></md-divider>
+	</md-content>
+  	</div>
+</div>

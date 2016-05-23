@@ -1,0 +1,42 @@
+<md-dialog flex="25" aria-label="Lock"  ng-cloak>
+    <form ng-submit="answer()" name="useForm">
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>{{title}} - {{item.name}}</h2>
+            <span flex></span>
+        </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container class="md-block" flex-gt-sm ng-if="title=='Add'">
+                    <label>Enter amount in {{item.unit}}</label>
+                    <input type="number" ng-model="$parent.amount1" name="amount1" ng-min="1" md-autofocus ng-required="true">
+                    <div ng-messages="useForm.amount1.$error">
+                        <div ng-message="required">This is required.</div>
+                        <div ng-message="min">Minimum amount should be 1 {{item.unit}}.</div>
+                    </div>
+                </md-input-container>
+                 <md-input-container class="md-block" flex-gt-sm ng-if="title=='Add'">
+                    <label>Enter total price</label>
+                    <input type="number" ng-model="$parent.price1" name="price1"  ng-required="true">
+                    <div ng-messages="useForm.price1.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm ng-if="title=='Use'">
+                    <label>Enter amount (not more than {{item.quantity}} {{item.unit}})</label>
+                    <input type="number" ng-model="$parent.amount2" name="amount2"  ng-min="1" md-autofocus ng-required="true">
+                    <div ng-messages="useForm.amount2.$error">
+                        <div ng-message="required">This is required.</div>
+                        <div ng-message="min">Minimum amount should be 1 {{item.unit}}.</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="cancel()">Cancel</md-button>
+            <md-button type="submit" class="mr-s">Confirm</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,65 @@
+<md-dialog aria-label="Lock"  ng-cloak>
+    <form ng-submit="updateUser(newUser)" name="registerForm">
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 class="mr-xl">Edit Profile</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content" flex>
+                <div flex  layout="row">
+                    <div class="flex-50 pr-s">
+                        <md-input-container class="md-block">
+                            <md-icon md-svg-src="images/icons/ic_person_24px.svg" class="name"></md-icon>
+                            <input ng-model="newUser.name" type="text" placeholder="Name" ng-required="true" name="name">
+                            <div ng-messages="registerForm.name.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <md-icon md-svg-src="images/icons/ic_phone_24px.svg" class="name"></md-icon>
+                            <input ng-model="newUser.phoneNo" type="number" placeholder="Phone No (required)" ng-required="true" ng-maxlength="10">
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <md-icon md-svg-src="images/icons/ic_email_24px.svg" class="email"></md-icon>
+                            <input ng-model="newUser.email" type="text" placeholder="Email (required)">
+                        </md-input-container>
+                    </div>
+                    <div class="flex-50 pl-s">
+                        <md-input-container class="md-block">
+                            <md-icon md-svg-src="images/icons/ic_tablet_24px.svg" class="name"></md-icon>
+                            <input ng-model="newUser.roomNo" type="text" placeholder="Room No (required)" ng-required="true">
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <md-icon md-svg-src="images/icons/ic_date_range_24px.svg" class="name"></md-icon>
+                            <input ng-model="newUser.dob" type="calender" placeholder="Date of birth (required)" ng-required="true">
+                        </md-input-container>
+                        <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="newUser.veg" class="md-primary">
+                            Veg
+                        </md-checkbox>
+                    </div>
+                </div>
+                <div flex layout="column">
+                    <div flex>
+                        <md-input-container class="md-block">
+                            <md-icon md-svg-src="images/icons/ic_room_24px.svg" class="name"></md-icon>
+                            <input ng-model="newUser.address" type="text" placeholder="Address">
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="flex md-primary"  layout="column">
+                    {{user.message}}
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="" ng-click="cancel()">Cancel</md-button>
+            <md-button type="submit" class="md-warn md-raised mr-s">Update</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

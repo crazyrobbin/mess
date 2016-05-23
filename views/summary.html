@@ -1,0 +1,70 @@
+<md-toolbar class="md-whiteframe-2dp" ng-cloak>
+    <div class="md-toolbar-tools">
+          <h2 class="mr-l"> 
+              <span>{{title}}</span>
+          </h2>
+          <span flex></span>
+    </div>
+</md-toolbar>
+<md-content ng-cloak>
+            <md-content class="md-padding" flex>
+            <h2>Date: {{day.date | date:'EEEE, dd MMM yyyy'}}</h2>
+            <md-header>Total Collection: ₹{{day.totalCollection}}</md-header>
+            </md-content>
+            <md-content class="md-padding" layout="row" flex ng-cloak>
+
+                    <md-card ng-repeat="meal in day.meals" flex="33">
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-title">{{meal.name | capitalize}}</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content class="m-0 p-0">
+                            <span class="block md-body-1 p-xxs">
+                                <span class="bold">Registered Users: </span>Veg({{meal.totalRegisteredUsers[0]}}), Non Veg({{meal.totalRegisteredUsers[1]}})
+                            </span>
+
+                            <span class="block md-body-1 p-xxs">
+                                Last week data: Veg({{meal.lastWeekData[0]}}), Non Veg({{meal.lastWeekData[1]}})
+                            </span>
+
+                            <span class="block md-body-1 p-xxs">
+                                <span class="bold">Collections: </span>₹{{meal.collection}}
+                            </span>
+                            
+                            <md-divider class="m-0 "></md-divider>
+
+                            <span class="block md-body-1 p-xxs">
+                                <span class="bold">Users Ate: </span>Veg({{meal.totalRegisteredUserAte[0] + meal.totalNonRegisteredUserAte[0]}}), Non Veg({{meal.totalRegisteredUserAte[1] + meal.totalNonRegisteredUserAte[1]}})
+                            </span>
+                            
+                            <md-divider class="m-0 "></md-divider>
+
+                            <span class="block md-body-1 p-xxs">
+                                Registered Users Ate: Veg({{meal.totalRegisteredUserAte[0]}}), Non Veg({{meal.totalRegisteredUserAte[1]}})
+                            </span>
+
+                            <span class="block md-body-1 p-xxs">
+                                Non Registered Users Ate: Veg({{meal.totalNonRegisteredUserAte[0]}}), Non Veg({{meal.totalNonRegisteredUserAte[1]}})
+                            </span>
+
+                            <md-divider class="m-0  "></md-divider>
+                            
+                            <span class="block md-body-1 p-xxs">
+                                <span class="bold">Delivery Orders: </span>Veg({{meal.totalDeliveryOrders[0]}}), Non Veg({{meal.totalDeliveryOrders[1]}})
+                                <md-button class="md-icon-button" aria-label="Edit" ng-click="showDeliveryAddress($index, $event)">
+                                <md-icon md-svg-src="images/icons/ic_room_24px.svg"></md-icon>
+                                <md-tooltip md-direction="bottom">Show Address List</md-tooltip>
+                            </md-button>
+                            </span>
+        
+                        </md-card-content>
+                        <!-- <md-divider class="m-0"></md-divider>
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button class="md-icon-button" aria-label="Edit" ng-click="addExtra($parent.$index, $index, $event)">
+                                Show Delivery Address
+                            </md-button>
+                        </md-card-actions> -->
+                    </md-card>
+            </md-content>
+</md-content>

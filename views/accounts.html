@@ -1,0 +1,16 @@
+<md-toolbar class="md-whiteframe-2dp" ng-cloak>
+    <div class="md-toolbar-tools">
+        <h2 class="mr-l">   
+            <span>Accounts</span>
+        </h2>
+        <input ng-model="searchText" class="ml-l" type="text" placeholder="search">
+        <span flex></span>
+    </div>
+</md-toolbar>
+<md-content md-scroll-y layout="column" class="scroll-div" ng-cloak>
+    <md-list-item ng-repeat="user in users | filter:searchText" ng-click="openUserDetail($event, user.roomNo)">
+        <p> {{ user.name }} (₹{{user.balance}}) - Room No: {{user.roomNo}} Phone No: {{user.phoneNo}} </p>
+        <md-button class="md-secondary" ng-click="cancelRegistration($index, $event)">Cancel</md-button>
+    </md-list-item>
+</md-content>
+

@@ -1,0 +1,17 @@
+<md-toolbar class="md-whiteframe-2dp" ng-cloak>
+    <div class="md-toolbar-tools">
+        <h2 class="mr-l"> 
+            <span>Staffs</span>
+        </h2>
+        <span flex></span>
+        <md-button ng-click="changePin($event)">Change Pin</md-button>
+        <md-button ng-click="addNewStaff($event)">Add New</md-button>
+    </div>
+</md-toolbar>
+<md-content  md-scroll-y layout="column" class="scroll-div" ng-cloak>
+    <md-list-item ng-repeat="staff in staffs">
+        <p> {{ staff.name }} - {{staff.position}} </p>
+        <md-button class="md-secondary" ng-click="remove($index, $event)">Remove</md-button>
+    </md-list-item>
+</md-content>
+

@@ -1,0 +1,54 @@
+<md-dialog flex="50" aria-label="Lock"  ng-cloak>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2>{{title | capitalize}} history</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+    </div> 
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-list-item  class="md-3-line" ng-repeat="list in lists">
+                <div class="md-list-item-text" layout="column">
+                    <h3>
+                        Start Date: {{ list.startDate | date:'MM/dd/yyyy'}}
+                        <label ng-repeat="timing in list.startDateTimings">
+                            <input type="checkbox" ng-model="timing.checked" ng-disabled="true"/>
+                            {{timing.value}}
+                        </label>
+                    </h3>
+                    <h4>
+                        <span ng-if="list.endDate!=null">
+                            End Date: {{list.endDate | date:'MM/dd/yyyy'}}
+                            <label ng-repeat="timing in list.endDateTimings">
+                                <input type="checkbox" ng-model="timing.checked" ng-disabled="true"/>
+                                {{timing.value}}
+                            </label>
+                        </span>
+                    </h4>
+                    <p ng-if="list.endDate!=null">
+                        <label>
+                            <input type="checkbox" ng-model="list.allBreakfast" ng-disabled="true"/>
+                            All Breakfast
+                        </label>
+                        <label>
+                            <input type="checkbox" ng-model="list.allLunch" ng-disabled="true"/>
+                            All Lunch
+                        </label>
+                        <label>
+                            <input type="checkbox" ng-model="list.allDinner" ng-disabled="true"/>
+                            All Dinner
+                        </label>
+                    </p>
+                </div>
+                <md-button class="md-secondary" ng-click="remove($index, $event)">Remove</md-button>
+            </md-list-item>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

@@ -1,0 +1,31 @@
+<md-dialog flex="50" aria-label="Lock"  ng-cloak>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2>{{title}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+    </div> 
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-list-item ng-repeat="stock in stocks">
+                <md-input-container class="md-block" flex="60">
+                        <label>Name</label>
+                        <textarea ng-model="stock.name" name="name" ng-blur="updateItem($index)"></textarea>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="20">
+                        <input ng-model="stock.rank" type="number" placeholder="Rank" ng-required="true" ng-blur="updateItem($index)">
+                    </md-input-container>
+                     <md-input-container class="md-block" flex="20">
+                        <input ng-model="stock.threshold" type="number" placeholder="Threshold amount in {{stock.unit}}" ng-required="true" ng-blur="updateItem($index)">
+                    </md-input-container>
+            </md-list-item>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

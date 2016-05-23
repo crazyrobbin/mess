@@ -1,0 +1,38 @@
+{
+  "name": "Foodmonk-Mess",
+  "version": "1.0.0",
+  "description": "Complete solution for mess",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "asar pack Foodmonk-win32-x64/resources/app Foodmonk-win32-x64/resources/app.asar",
+    "build": "electron-packager . Foodmonk --platform=win32 --arch=x64 --version=0.35.0 --ignore=node_modules/electron.* --icon=C:/xampp/htdocs/public/images/ico4.ico"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atom/electron-quick-start.git"
+  },
+  "keywords": [
+    "Foodmonk",
+    "Mess",
+    "Software"
+  ],
+  "author": "Robbin Singh",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/atom/electron-quick-start/issues"
+  },
+  "homepage": "https://github.com/atom/electron-quick-start#readme",
+  "devDependencies": {
+    "asar": "^0.10.0",
+    "electron-installer-squirrel-windows": "^1.2.2",
+    "electron-packager": "^5.2.1",
+    "electron-prebuilt": "^0.36.0",
+    "grunt": "^0.4.5",
+    "grunt-electron-windows-installer": "^0.1.0"
+  },
+  "dependencies": {
+    "angular-material-calendar": "^0.2.14",
+    "nedb": "^1.7.2"
+  }
+}

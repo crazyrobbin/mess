@@ -1,0 +1,50 @@
+<h2 ng-cloak>Edit Restaurant - {{restName}}</h2>
+
+
+<md-content  class="large-padding  margin-top-large" ng-cloak>
+		<div flex ng-repeat="m in menu">
+		<h2 class="">{{m.cat}}</h2>
+			<div flex="100" layout="row" layout-wrap layout-align="start" layout-xs="column" ng-repeat="item in m.items">
+					 <div layout-gt-xs="row" flex="15">
+				            <md-select aria-label="Switch 1" ng-model="item.veg" ng-change="updateItem(item.id, 'veg', item.veg)">
+					          <md-option value="1">
+					            Veg
+					          </md-option>
+					          <md-option value="0">
+					            Non-Veg
+					          </md-option>
+					        </md-select>
+			        </div>
+        			<div layout-gt-xs="column" flex="25">
+						<md-input-container class="" flex-gt-xs>
+			            <label>Name</label>
+			            <input  ng-model="item.name" ng-blur="updateItem(item.id, 'name', item.name)">
+			          	</md-input-container>
+			        </div>
+			        <div layout-gt-xs="row" flex="15">
+			          <md-input-container class="" flex-gt-xs>
+			            <label>Size</label>
+			            <input ng-model="item.size" ng-blur="updateItem(item.id, 'size', item.size)">
+			          </md-input-container>
+			        </div>
+			         <div layout-gt-xs="row" flex="15">
+			          <md-input-container class="" flex-gt-xs>
+			            <label>Pid for restaurant</label>
+			            <input ng-model="item.pid" ng-blur="updateItem(item.id, 'pid', item.pid)">
+			          </md-input-container>
+			        </div>
+			        <div layout-gt-xs="row" flex="15">
+			          <md-input-container class="" flex-gt-xs>
+			            <label>Price</label>
+			            <input ng-model="item.price" ng-blur="updateItem(item.id, 'price', item.price)">
+			          </md-input-container>
+			        </div>
+			        <div layout-gt-xs="row" flex="15">
+			          <md-switch ng-model="item.avail" aria-label="Switch 6" ng-change="updateItem(item.id, 'avail', item.avail)">
+					   Available
+					  </md-switch>
+			        </div>
+			</div>
+	        
+	        </div>
+</md-content>

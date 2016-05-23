@@ -1,0 +1,30 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2"
+    md-component-id="left"
+    md-is-locked-open="$mdMedia('gt-md')">
+
+    <header class="nav-header" ss-style-color="{'background-color': 'primary.default'}">
+        <img src="images/white-logo.png" class="mt-xs mb-s center">
+    </header>
+
+    <md-content flex role="navigation" ss-style-color="{'background-color': 'primary.default'}">
+        <ss-sidenav flex menu="menu"></ss-sidenav>
+    </md-content>
+</md-sidenav>
+<div flex>
+	<md-toolbar class="slide-animate md-whiteframe-2dp" >
+	    <div class="md-toolbar-tools">
+	        <h2>
+	          <span class="mr-s">Sushruta Hostel Mess – Ground Floor</span><span><md-icon md-svg-icon="images/icons/ic_local_phone_24px.svg"></md-icon>887-4344-111</span>
+	        </h2>
+	        <span flex></span>
+	        <span class="mr-s small-text">{{updateStatus}}</span>{{theclock}}
+	        <md-button aria-label="Go Back" ng-click="lockScreen($event)">
+	        	<md-icon md-svg-icon="images/icons/ic_lock_outline_24px.svg"></md-icon>Lock
+	        </md-button>
+	        <md-button class="md-fab md-primary md-mini md-hue-2" aria-label="Exit" ng-click="showConfirm($event)">
+	         	<md-icon md-svg-icon="images/icons/ic_close_24px.svg"></md-icon>
+	        </md-button>
+	    </div>
+	</md-toolbar>
+    <md-content ui-view layout="column" tabIndex="-1" role="main" flex></md-content>
+</div>

@@ -1,0 +1,41 @@
+<md-dialog flex="75" aria-label="Lock"  ng-cloak>
+    <form ng-submit="add(newItem)">
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>New Stock Item</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content" flex layout ="row">
+                    <md-input-container class="md-block" flex="40">
+                        <label>Name</label>
+                        <textarea ng-model="newItem.name" name="name"></textarea>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex="20">
+                        <input ng-model="newItem.rank" type="number" placeholder="Rank" ng-required="true">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Unit</label>
+                        <md-select ng-model="newItem.unit">
+                            <md-option ng-repeat="unit in units" value="{{unit}}">
+                                {{unit}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                     <md-input-container class="md-block" flex="20">
+                        <input ng-model="newItem.threshold" type="number" ng-min="1" placeholder="Threshold amount" ng-required="true">
+                    </md-input-container>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            {{message}}
+            <span flex></span>
+            <md-button ng-click="cancel()">Cancel</md-button>
+            <md-button type="submit" class="mr-s">Update</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

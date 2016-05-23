@@ -1,0 +1,18 @@
+<md-toolbar class="md-whiteframe-2dp" ng-cloak>
+    <div class="md-toolbar-tools">
+          <h2 class="mr-l"> 
+              <span>Stocks</span>
+          </h2>
+          <input ng-model="searchText" class="ml-l mr-l" type="text" placeholder="search">
+          <md-checkbox ng-model="showThreshold">Show under Threshold</md-checkbox>
+          <span flex></span>
+          <md-button ng-click="editStocks()">Edit</md-button>
+          <md-button ng-click="addNewItem()">Add New</md-button>
+    </div>
+</md-toolbar>
+<md-content md-scroll-y layout="column" class="scroll-div" ng-cloak>
+    <md-list-item ng-repeat="stock in stocks | filter:searchText" ng-click="useStock($index, $event, 'Use')" ng-if="!showThreshold || stock.quantity<stock.threshold">
+        <p ng-class="stock.quantity < stock.threshold ? 'red': ''"> {{ stock.name }} - {{stock.quantity}} {{stock.unit}} </p>
+        <md-button class="md-secondary" ng-click="useStock($index, $event, 'Add')">Add</md-button>
+    </md-list-item>
+</md-content>

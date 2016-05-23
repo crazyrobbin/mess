@@ -1,0 +1,31 @@
+<md-dialog flex="70" aria-label="Lock"  ng-cloak>
+    <form ng-submit="add(newItem)">
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>New Permanent Stock Item</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content" flex layout ="row">
+                <md-input-container class="md-block" flex="60">
+                    <label>Name</label>
+                    <textarea ng-model="newItem.name" name="name"></textarea>
+                </md-input-container>
+                <md-input-container class="md-block" flex="10">
+                    <input ng-model="newItem.rank" type="number" placeholder="Rank" ng-required="true">
+                </md-input-container>
+                <md-checkbox ng-model="newItem.canBeIssued" flex="30">Can Be Issued</md-checkbox>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            {{message}}
+            <span flex></span>
+            <md-button ng-click="cancel()">Cancel</md-button>
+            <md-button type="submit" class="mr-s">Update</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

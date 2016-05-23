@@ -1,0 +1,17 @@
+<md-toolbar class="md-whiteframe-2dp" ng-cloak>
+    <div class="md-toolbar-tools">
+          <h2 class="mr-l"> 
+              <span>Permanent Stocks</span>
+          </h2>
+          <input ng-model="searchText" class="ml-l mr-l" type="text" placeholder="search">
+          <md-checkbox ng-model="showThreshold">Show issued items only</md-checkbox>
+          <span flex></span>
+          <md-button ng-click="addNewItem()">Add New</md-button>
+    </div>
+</md-toolbar>
+<md-content md-scroll-y layout="column" class="scroll-div" ng-cloak>
+    <md-list-item ng-repeat="stock in stocks | filter:searchText" ng-click="issuedDetail($index, $event)" ng-if="!showThreshold || stock.issued">
+        <p> {{ stock.name }} - {{stock.quantity}} <span ng-if="stock.issued>0"  class="red">    Issued: {{stock.issued}}</span></p>
+        <md-button class="md-secondary" ng-click="addQuantityPermanentStock($index, $event)">Add</md-button>
+    </md-list-item>
+</md-content>

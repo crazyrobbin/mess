@@ -1,0 +1,49 @@
+<md-dialog flex="85" aria-label="Lock"  ng-cloak>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2 ng-if="!title">History</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+    </div> 
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content" flex layout="row">
+            <div flex="80">
+                <calendar-md flex layout layout-fill
+                    calendar-direction="direction"
+                    on-prev-month="prevMonth"
+                    on-next-month="nextMonth"
+                    on-day-click="dayClick"
+                    title-format="'MMMM y'"
+                    ng-model='selectedDate'
+                    week-starts-on="firstDayOfWeek"
+                    tooltips="tooltips"
+                    day-format="dayFormat"
+                    day-label-format="'EEE'"
+                    day-label-tooltip-format="'EEEE'"
+                    day-tooltip-format="'fullDate'"
+                    day-content="setDayContent"
+                    disable-future-selection="true">
+                </calendar-md>
+            </div>
+            <div flex="20">
+                <span ng-if="detail.amount!=0">
+                Total Amount: ₹{{detail.amount}}
+                Total Balance: ₹{{detail.balance}}
+                <div flex ng-repeat="m in detail.meals">
+                    <h3>{{m.type}}</h3>
+                    <span  ng-if="!m.visited">Not </span>Visited<span  ng-if="m.delivery">(Delivery)</span>
+                    <span class="md-caption block">Amount: {{m.amount}}</span>
+                    <md-divider></md-divider>
+                </div>
+                </span>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()">Close</md-button>
+    </md-dialog-actions>
+</md-dialog>

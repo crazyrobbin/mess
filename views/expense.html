@@ -1,0 +1,24 @@
+<md-toolbar class="md-whiteframe-2dp" ng-include="'views/actionbar.html'" ng-if="title" ng-cloak></md-toolbar>
+<md-content class="md-padding" ng-if="!show" ng-cloak>
+    <form ng-submit="submit(expense)" name="submitForm">
+       <md-input-container class="md-block">
+            <input ng-model="expense.amount" type="number" placeholder="Amount" ng-required="true" name="name">
+            <div ng-messages="submitForm.name.$error">
+                <div ng-message="required">This is required.</div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+                <label>Short description</label>
+                <textarea ng-model="expense.desc" ng-required="true" name="shortdescription"></textarea>
+                <div ng-messages="submitForm.shortdescription.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+        </md-input-container>
+        <md-button class="" ng-click="reset()">Reset</md-button>
+        <md-button type="submit" class="md-warn md-raised mr-s">Submit</md-button>
+    </form>
+</md-content>
+<md-content ng-if="show" md-padding ng-cloak>
+    <h2>Successfully updated.</h2> 
+    <md-button ng-click="addAnother()">Add Another</md-button>
+</md-content>
